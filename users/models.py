@@ -2,10 +2,11 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
-    customUserEmail=models.EmailField(unique=True)
+    email=models.EmailField(unique=True)
     username=models.CharField(unique=True,max_length=50)
     customUserPhone=models.IntegerField(null=True) 
-    USERNAME_FIELD="customUserEmail"
+    
+    USERNAME_FIELD="email"
     REQUIRED_FIELDS=["username"]
 
 class CustomUserProfile(models.Model):
