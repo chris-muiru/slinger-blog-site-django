@@ -8,6 +8,7 @@ from .serializers import CustomUserSerializer
 class SignUpCustomUserView(APIView):
     def post(self,request):
         serializer=CustomUserSerializer(data=request.data)
+        print(serializer.is_valid())
         if serializer.is_valid():
             serializer.save()
             return Response({},status=status.HTTP_201_CREATED) 
