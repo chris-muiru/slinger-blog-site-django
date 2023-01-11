@@ -9,17 +9,15 @@ class Tag(models.Model):
 
 
 class Blog(models.Model):
-    blogTitle=models.CharField(max_length=100)
+    blogTitle=models.CharField(max_length=100,unique=True)
     blogContent=models.TextField()
     writter=models.ForeignKey(CustomUser,on_delete=models.CASCADE)
     tag=models.ManyToManyField(Tag)
     def __str__(self):
-        return self.blogTitle
-
+        return f"{self.id} - {self.blogTitle}"
 
 class BookmarkedBlog(models.Model):
     blog=models.ForeignKey(Blog,on_delete=models.CASCADE)
-    blog_is_booked=models.BooleanField(default=True)
 
     def __str__(self):
         return self.blog.blogTitle
@@ -29,5 +27,5 @@ class BlogPic(models.Model):
     blogPic=models.ImageField(upload_to=blog)
 
     def __str__(self):
-        return self.blog.blogTitle
+        return f"{self.blog.id}"
 # Create your models here.
