@@ -6,5 +6,5 @@ class CommentSerializer(serializers.ModelSerializer):
         model=Comment
 class LikeSerializer(serializers.ModelSerializer):
     class Meta:
-        fields='__all__'
+        fields=''
         model=Like
