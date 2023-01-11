@@ -106,6 +106,17 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'slingerBlogSite',
+        'USER': dotenv_values(".env")["DB_USER"],
+        'PASSWORD': dotenv_values(".env")["DB_PASSWORD"],
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -137,8 +148,9 @@ REST_FRAMEWORK = {
     ]
 }
 
+# TODO: change minutes to 4 and days to 30
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=50),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=1050),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': True,
     'BLACKLIST_AFTER_ROTATION': True,
